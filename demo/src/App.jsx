@@ -47,6 +47,9 @@ import Product from "./RoutingComponent/Product"
 import Book from "./RoutingComponent/Book"
 import Home from "./RoutingComponent/Home"
 import EmployeeDetail from "./RoutingComponent/EmployeeDetail"
+import EmployeeDetail1 from "./RoutingComponent/EmployeeDetail1"
+import BookDetail from "./RoutingComponent/BookDetail"
+
 
 
 function App() {
@@ -105,6 +108,23 @@ const [status , setStatus] = useState(true)
   const ClickHandler5=()=>{
     Navigate5('/e')
   }
+
+  const [text , setText] = useState()
+ 
+  const Navigate6 = useNavigate()
+
+  const clickHandler6 =()=>{
+     Navigate6(`/emp/${text}`)
+
+  }
+
+  const [text1 , settext1] = useState()
+
+  const  Navigate7 = useNavigate()
+  const clickHandler7=()=>{
+    Navigate7(`/book/${text1}`)
+  }
+  
 
   
   return (
@@ -283,7 +303,7 @@ const [status , setStatus] = useState(true)
     <div className="container">
       <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <Link class="navbar-brand" too="">Web Application</Link>
+  <Link class="navbar-brand" to="">Web Application</Link>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -304,8 +324,16 @@ const [status , setStatus] = useState(true)
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <div className="d-flex mb-2">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search employee" aria-label="Search" onChange={(e)=>setText(e.target.value)}/>
+      
+      <button class="btn btn-outline-success my-2 my-sm-0" type="button" onClick={clickHandler6}>Search Employee</button>
+    </div>
+    <div className="d-flex">
+       <input class="form-control mr-sm-2" type="search" placeholder="Search book" aria-label="Search" onChange={(e)=>settext1(e.target.value)}/>
+      
+      <button class="btn btn-outline-success my-2 my-sm-0" type="button" onClick={clickHandler7}>Search Book</button>
+      </div>
     </form>
   </div>
 </nav>
@@ -321,6 +349,8 @@ const [status , setStatus] = useState(true)
       <Route path="b" element={<Book></Book>}></Route>
       <Route path='*' element={<PageNotFound></PageNotFound>}></Route>
       <Route path="e/:id" element={<EmployeeDetail></EmployeeDetail>}></Route>
+      <Route path="/emp/:name"  element={<EmployeeDetail1></EmployeeDetail1>}></Route>
+      <Route path="/book/:title" element={<BookDetail></BookDetail>}></Route>
     </Routes>
 
     <br></br>
