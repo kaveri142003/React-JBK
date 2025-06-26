@@ -1,11 +1,11 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 
-function EmployeeDetail() {
+function EmployeeDetail1() {
 
-    const { id } = useParams()
+    const {name} = useParams ()
 
-    const empInfo = [
+      const empInfo = [
   {
     id: 101,
     name: "Amit Sharma",
@@ -78,46 +78,37 @@ function EmployeeDetail() {
   }
 ];
 
-    let filterEmp = empInfo.filter((e) => e.id == id)
+const filterEmp = empInfo.filter((e)=>e.name==name)
 
 
-    return (
-        <>
-            <div className='container mt-4 w-75 m-auto'>
-                <br></br>
-                {
-                    filterEmp.map((e) => {
+  return (
+    
+      filterEmp.length !==0 ?
+    
+     (<div className='container mt-4' style={{border:"3px solid green" , width:"30rem"}}>
+      {
 
-                        return (
-                            <>
-                                <div className="card" style={{width: "18rem"}}>
-                                    <img className="card-img-top" src= {e.image} alt="Card image cap" />
-                                    <div className="card-body">
-                                        <h5 className="card-title">{e.name}</h5>
-                                        <p className="card-text">{e.position}</p>
-                                        <p className="card-text">{e.salary}</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
+            filterEmp.map((e)=>{
+                return(
+                    <>
+                    <h3>Empname :-{e.name}</h3>
+                    <p>Position :-{e.position}</p>
+                    <p>Salrary :- {e.salary}</p>
+                    
+                    </>
 
+                )
 
-                            </>
+                
+            })
+        }
+      
 
-                        )
-                    })
-                }
-            </div>
-
-
-
-
-
-
-
-
-        </>
-    )
-
+    </div>
+     ):<div style={{textAlign:'center'}}>Employee not found</div>
+    
+  )
 }
 
-export default EmployeeDetail
+
+export default EmployeeDetail1 ;
