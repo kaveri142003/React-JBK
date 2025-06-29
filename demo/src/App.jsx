@@ -49,6 +49,7 @@ import Home from "./RoutingComponent/Home"
 import EmployeeDetail from "./RoutingComponent/EmployeeDetail"
 import EmployeeDetail1 from "./RoutingComponent/EmployeeDetail1"
 import BookDetail from "./RoutingComponent/BookDetail"
+import PropsAsCallback from "./RoutingComponent/PropsAsCallback"
 
 
 
@@ -123,6 +124,13 @@ const [status , setStatus] = useState(true)
   const  Navigate7 = useNavigate()
   const clickHandler7=()=>{
     Navigate7(`/book/${text1}`)
+  }
+  const [food, setFood] =useState()
+
+  const Navigate8 = useNavigate()
+  
+  const clickHandler8=()=>{
+    Navigate8(`/pro/${food}`)
   }
   
 
@@ -322,6 +330,9 @@ const [status , setStatus] = useState(true)
       <li class="nav-item">
         <Link class="nav-link" to="b">Book</Link>
       </li>
+      <li class="nav-item">
+        <Link class="nav-link" to="pac">PropsAsCallback</Link>
+      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <div className="d-flex mb-2">
@@ -333,6 +344,11 @@ const [status , setStatus] = useState(true)
        <input class="form-control mr-sm-2" type="search" placeholder="Search book" aria-label="Search" onChange={(e)=>settext1(e.target.value)}/>
       
       <button class="btn btn-outline-success my-2 my-sm-0" type="button" onClick={clickHandler7}>Search Book</button>
+      </div>
+      <div className="d-flex">
+       <input class="form-control mr-sm-2" type="search" placeholder="Search food" aria-label="Search" onChange={(e)=>setFood(e.target.value)}/>
+      
+      <button class="btn btn-outline-success my-2 my-sm-0" type="button" onClick={clickHandler8}>Search Food</button>
       </div>
     </form>
   </div>
@@ -351,6 +367,8 @@ const [status , setStatus] = useState(true)
       <Route path="e/:id" element={<EmployeeDetail></EmployeeDetail>}></Route>
       <Route path="/emp/:name"  element={<EmployeeDetail1></EmployeeDetail1>}></Route>
       <Route path="/book/:title" element={<BookDetail></BookDetail>}></Route>
+      <Route path="/pro/:id" element={<Product></Product>}></Route>
+      <Route path="pac" element={<PropsAsCallback></PropsAsCallback>}></Route>
     </Routes>
 
     <br></br>
@@ -360,6 +378,8 @@ const [status , setStatus] = useState(true)
       <button className="btn btn-outline-success" onClick={ClickHandler5}>Show Employee</button>&nbsp;&nbsp;&nbsp;&nbsp;
       
     </div>
+
+    <hr></hr>
 
     </>
     
